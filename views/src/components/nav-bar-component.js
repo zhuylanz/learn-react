@@ -1,4 +1,6 @@
-const NavBarComponent = (
+const React = require("react");
+
+const NavBarComponent = () => (
     <div id="sidebar" class="sidebar">
         <div class="menu-left-part">
             <div class="search-holder">

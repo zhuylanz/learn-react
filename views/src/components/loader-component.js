@@ -1,4 +1,6 @@
-const LoaderComponent = (
+const React = require("react");
+
+const LoaderComponent = () => (
 	<table class="doc-loader">
 		<tbody>
 			<tr>
