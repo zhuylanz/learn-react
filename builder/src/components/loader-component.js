@@ -1,7 +1,7 @@
 const React = require("react");
 
 const LoaderComponent = () => (
-	<table class="doc-loader">
+	<table className="doc-loader">
 		<tbody>
 			<tr>
 				<td>

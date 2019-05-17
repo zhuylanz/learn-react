@@ -11,11 +11,11 @@ const options = {
 	module: {
 		rules: [
 			{
-				test: /\.jsx$/,
+				test: /\.jsx?$/,
 				exclude: /node_modules/,
 				loader: "babel-loader",
 				options: {
-					presets: ["@babel/react"]
+					presets: ["@babel/preset-react"]
 				}
 			}
 		]
@@ -23,5 +23,8 @@ const options = {
 };
 
 webpack(options, (err, stats) => {
-	console.log("stats", stats.hasErrors());
+	if (err || stats.hasErrors()) {
+		// throw err;
+		console.log(stats);
+	}
 });

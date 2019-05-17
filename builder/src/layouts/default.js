@@ -3,11 +3,11 @@ const LoaderComponent = require("../components/loader-component");
 const NavBarComponent = require("../components/nav-bar-component");
 
 const DefaultLayout = ({ children }) => (
-	<div>
+	<React.Fragment>
 		<LoaderComponent />
 		<NavBarComponent />
 		{children}
-	</div>
+	</React.Fragment>
 );
 
 module.exports = DefaultLayout;
