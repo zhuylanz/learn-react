@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = "./src/pages/double.entry.js");
+/******/ 	return __webpack_require__(__webpack_require__.s = "./src/pages/testClock.entry.js");
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -251,6 +251,17 @@ eval("const React = __webpack_require__(/*! react */ \"../node_modules/react/ind
 
 /***/ }),
 
+/***/ "./src/components/react-clock.js":
+/*!***************************************!*\
+  !*** ./src/components/react-clock.js ***!
+  \***************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("const React = __webpack_require__(/*! react */ \"../node_modules/react/index.js\");\n\nclass Clock extends React.Component {\n  constructor(props) {\n    super(props);\n    this.state = {\n      date: new Date()\n    };\n  }\n\n  componentDidMount() {\n    this.timerID = setInterval(() => this.tick(), 1000);\n  }\n\n  componentWillUnmount() {\n    clearInterval(this.timerID);\n  }\n\n  tick() {\n    this.setState({\n      date: new Date()\n    });\n  }\n\n  render() {\n    return React.createElement(\"div\", null, React.createElement(\"h1\", null, \"Hello, world!\"), React.createElement(\"h2\", null, \"It is \", this.state.date.toLocaleTimeString(), \".\"));\n  }\n\n}\n\nmodule.exports = Clock;\n\n//# sourceURL=webpack:///./src/components/react-clock.js?");
+
+/***/ }),
+
 /***/ "./src/layouts/default.js":
 /*!********************************!*\
   !*** ./src/layouts/default.js ***!
@@ -262,25 +273,25 @@ eval("const React = __webpack_require__(/*! react */ \"../node_modules/react/ind
 
 /***/ }),
 
-/***/ "./src/pages/double.entry.js":
-/*!***********************************!*\
-  !*** ./src/pages/double.entry.js ***!
-  \***********************************/
+/***/ "./src/pages/testClock.entry.js":
+/*!**************************************!*\
+  !*** ./src/pages/testClock.entry.js ***!
+  \**************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("const React = __webpack_require__(/*! react */ \"../node_modules/react/index.js\");\n\nconst ReactDOM = __webpack_require__(/*! react-dom */ \"../node_modules/react-dom/index.js\");\n\nconst Component = __webpack_require__(/*! ./double.js */ \"./src/pages/double.js\");\n\nReactDOM.render(React.createElement(Component), document);\n\n//# sourceURL=webpack:///./src/pages/double.entry.js?");
+eval("const React = __webpack_require__(/*! react */ \"../node_modules/react/index.js\");\n\nconst ReactDOM = __webpack_require__(/*! react-dom */ \"../node_modules/react-dom/index.js\");\n\nconst Component = __webpack_require__(/*! ./testClock.js */ \"./src/pages/testClock.js\");\n\nReactDOM.render(React.createElement(Component), document);\n\n//# sourceURL=webpack:///./src/pages/testClock.entry.js?");
 
 /***/ }),
 
-/***/ "./src/pages/double.js":
-/*!*****************************!*\
-  !*** ./src/pages/double.js ***!
-  \*****************************/
+/***/ "./src/pages/testClock.js":
+/*!********************************!*\
+  !*** ./src/pages/testClock.js ***!
+  \********************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("const React = __webpack_require__(/*! react */ \"../node_modules/react/index.js\");\n\nconst DefaultLayout = __webpack_require__(/*! ../layouts/default */ \"./src/layouts/default.js\");\n\nconst SinglePage = () => React.createElement(DefaultLayout, null, React.createElement(\"div\", {\n  id: \"content\",\n  className: \"site-content center-relative\"\n}, React.createElement(\"div\", {\n  className: \"single-post-wrapper content-1070 center-relative\"\n}, React.createElement(\"article\", {\n  className: \"center-relative\"\n}, React.createElement(\"h1\", {\n  className: \"entry-title\"\n}, \"abc\"), React.createElement(\"div\", {\n  className: \"post-info content-660 center-relative\"\n}, React.createElement(\"div\", {\n  className: \"cat-links\"\n}, React.createElement(\"ul\", null, React.createElement(\"li\", null, React.createElement(\"a\", {\n  href: \"#\"\n}, \"Science\")))), React.createElement(\"div\", {\n  className: \"entry-date published\"\n}, \"{{\", \"February\", \"}}\", \" 12, 2016\"), React.createElement(\"div\", {\n  className: \"clear\"\n})), React.createElement(\"div\", {\n  className: \"entry-content\"\n}, React.createElement(\"div\", {\n  className: \"content-wrap content-660 center-relative\"\n}, React.createElement(\"p\", null, \"Now when I had mastered the language of this water and had come to know every trifling feature that bordered the great river as familiarly as I knew the letters of the alphabet, I had made a valuable acquisition.\"), React.createElement(\"br\", null), React.createElement(\"div\", {\n  className: \"clear\"\n})), React.createElement(\"div\", {\n  className: \"post-full-width\"\n}, React.createElement(\"script\", null, \"var slider1_speed = \\\"500\\\"; var slider1_auto = \\\"true\\\"; var slider1_pagination = \\\"true\\\"; var slider1_hover = \\\"true\\\";\"), React.createElement(\"div\", {\n  className: \"image-slider-wrapper\"\n}, React.createElement(\"div\", {\n  className: \"caroufredsel_wrapper\"\n}, React.createElement(\"ul\", {\n  id: \"slider1\",\n  className: \"image-slider slides center-text\"\n}, React.createElement(\"li\", null, React.createElement(\"img\", {\n  src: \"/demo-images/01_blogpost_galery.jpg\",\n  alt: \"\"\n})), React.createElement(\"li\", null, React.createElement(\"img\", {\n  src: \"/demo-images/02_blogpost_galery.jpg\",\n  alt: \"\"\n})), React.createElement(\"li\", null, React.createElement(\"img\", {\n  src: \"/demo-images/03_blogpost_galery.jpg\",\n  alt: \"\"\n})))), React.createElement(\"div\", {\n  className: \"slider1_pagination carousel_pagination left\"\n}), React.createElement(\"div\", {\n  className: \"clear\"\n})), React.createElement(\"div\", {\n  className: \"clear\"\n})), React.createElement(\"div\", {\n  className: \"content-wrap content-660 center-relative \"\n}, React.createElement(\"p\", null, \"I still keep in mind a certain wonderful sunset which I witnessed when and steamboating was new to me. A broad expanse of the river was turned too blood in the middle distance the red hue brightened into gold, through which a solitary log came floating, black and conspicuous in one place a long calm slanting mark lay sparkling upon the water in another the surface was broken by boiling, tumbling rings, that were as many-tinted as an opal where the ruddy flush was faintest, was a smooth spot that was covered with graceful circles and radiating lines.\"), React.createElement(\"br\", null), React.createElement(\"p\", {\n  className: \"wrap-blockquote\"\n}, \"Ever so delicately traced the shore on our left was densely wooded, and the som ber shadow that fell from this forest was broken in one place by a long, ruffled trail that shone like silver and high above the forest wall.\"), React.createElement(\"blockquote\", {\n  className: \"inline-blockquote\"\n}, React.createElement(\"p\", null, \"There were graceful curves, reflected images, woody on the heights, soft distances and over the whole scene far and so near, the dissolving lights drifted steadily now dissolving lights.\")), React.createElement(\"p\", {\n  className: \"wrap-blockquote\"\n}, \"But as I have said, a day came when I began to cease from noting the glories and the charms which the moon and the sun and the twilight wrought upon the river\\u2019s face another day came when I ceased altogether to note them. Then, if that sunset scene had been repeated, I should have looked upon it without rapture, and should have commented upon it, inwardly, after this fashion. But as I have said, a day came when I began to cease from noting the glories and the charms which the moon and the sun and the twilight wrought upon the one graceful curves, reflected images, woody heights, soft distances and over the whole sun scene, far and near, the dissolving lights drifted steadily, enriching it, every passing the moment, with new marvels of coloring. The world was new to me, and I had never seen anything like this at home. But as I have said, a day came when I began to cease from noting the glories and the charms which the moon and the sun and the twilight wrought upon the river\\u2019s face another day came when I ceased altogether to note them. Then, if that sunset scene had been repeated, I should have looked upon it without rapture, and should have commented upon it, inwardly, after this fashion.\"), React.createElement(\"br\", null), React.createElement(\"br\", null), React.createElement(\"img\", {\n  src: \"/demo-images/one_drop_post_image02.jpg\",\n  alt: \"\"\n}), React.createElement(\"br\", null), React.createElement(\"br\", null), React.createElement(\"p\", null, \"Duis iaculis mattis rutrum. Sed iaculis magna sit amet suscipit ornare. Nulla ornare leo a tortor aliquam, quis interdum ex tempor. Quisque ultricies consequat suscipit. Donec tincidunt tempor ornare. Praesent a enim vel augue suscipit auctor in gravida augue. Suspendisse ut libero sit amet augue molestie fringilla. Fusce molestie, velit a finibus eleifend, nibh odio sagittis est, id aliquet turpis orci quis nibh.\"))), React.createElement(\"div\", {\n  className: \"clear\"\n})))));\n\nmodule.exports = SinglePage;\n\n//# sourceURL=webpack:///./src/pages/double.js?");
+eval("const React = __webpack_require__(/*! react */ \"../node_modules/react/index.js\");\n\nconst DefaultLayout = __webpack_require__(/*! ../layouts/default */ \"./src/layouts/default.js\");\n\nconst Clock = __webpack_require__(/*! ../components/react-clock */ \"./src/components/react-clock.js\");\n\nmodule.exports = () => React.createElement(Clock, null);\n\n//# sourceURL=webpack:///./src/pages/testClock.js?");
 
 /***/ })
 

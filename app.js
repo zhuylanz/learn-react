@@ -22,6 +22,10 @@ app.get("/", function(req, res) {
 	res.render("home");
 });
 
+app.get("/test", function(req, res) {
+	res.render("testClock");
+});
+
 app.get("/post/single.html", function(req, res) {
 	res.render("single", { bodyClass: "single-post", title: "this is a test" });
 });

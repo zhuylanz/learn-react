@@ -16,7 +16,7 @@ const SinglePage = () => (
                             </ul>
                         </div>
                         <div className="entry-date published">
-                            {"{{"}February{"}}"} 12, 2016
+                            {"{{February}}"} 12, 2016
                         </div>
                         <div className="clear" />
                     </div>

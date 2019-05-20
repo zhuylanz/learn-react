@@ -9,28 +9,25 @@ const webpack = require("webpack");
 const React = require("react");
 const ReactDOMServer = require("react-dom/server");
 
-removeOldHandlebarPages();
+removeOldFiles();
 buildHandlebarPages();
 
-function removeOldHandlebarPages() {
-	const handlebarPaths = getHandlebarPaths();
-	for (let handlebarPath of handlebarPaths) {
-		fs.unlinkSync(handlebarPath);
+function removeOldFiles() {
+	removeHandlebarPages();
+	removeJsFiles();
+
+	function removeHandlebarPages() {
+		const handlebarPaths = getHandlebarPaths();
+		for (let handlebarPath of handlebarPaths) {
+			fs.unlinkSync(handlebarPath);
+		}
 	}
 
-	function getHandlebarPaths() {
-		const handlebarDir = getHandlebarDir();
-		const filenames = fs.readdirSync(handlebarDir);
-
-		let handlebarPaths = [];
-		for (let filename of filenames) {
-			const handlebarPath = `${handlebarDir}/${filename}`;
-			if (!fs.lstatSync(handlebarPath).isDirectory()) {
-				handlebarPaths.push(handlebarPath);
-			}
+	function removeJsFiles() {
+		const jsPaths = getJsPaths();
+		for (let jsPath of jsPaths) {
+			fs.unlinkSync(jsPath);
 		}
-
-		return handlebarPaths;
 	}
 }
 
@@ -76,7 +73,7 @@ async function bundlePages(pagePaths) {
 			const entryFileContent = `const React = require("react");
 			const ReactDOM = require("react-dom");
 			const Component = require("./${pageName}");
-			ReactDOM.render(React.createElement(Component), document);`;
+			ReactDOM.hydrate(React.createElement(Component), document.getElementById('root'));`;
 
 			return entryFileContent;
 		}
@@ -169,17 +166,54 @@ function injectHTMLsToTemplates(pageObjs) {
 
 	for (let pageObj of pageObjs) {
 		const handlebarPath = `${handlebarDir}/${pageObj.name}.handlebars`;
-		const handlebarContent = `${pageObj.html}<script src="/reactjs/${
-			pageObj.name
-		}.js"></script>`;
+		const handlebarContent = `<div id="root">${
+			pageObj.html
+		}</div><script src="/reactjs/${pageObj.name}.js"></script>`;
 
 		fs.writeFileSync(handlebarPath, handlebarContent);
 	}
+}
+
+function getHandlebarPaths() {
+	const handlebarDir = getHandlebarDir();
+	const filenames = fs.readdirSync(handlebarDir);
+
+	let handlebarPaths = [];
+	for (let filename of filenames) {
+		const handlebarPath = `${handlebarDir}/${filename}`;
+		if (!fs.lstatSync(handlebarPath).isDirectory()) {
+			handlebarPaths.push(handlebarPath);
+		}
+	}
+
+	return handlebarPaths;
+}
+
+function getJsPaths() {
+	const jsDir = getJsDir();
+	const filenames = fs.readdirSync(jsDir);
+
+	let jsPaths = [];
+	for (let filename of filenames) {
+		const jsPath = `${jsDir}/${filename}`;
+		if (!fs.lstatSync(jsPath).isDirectory()) {
+			jsPaths.push(jsPath);
+		}
+	}
+
+	return jsPaths;
 }
 
 function getHandlebarDir() {
 	return path.resolve(
 		__dirname,
 		process.env.BUILDER_HANDLEBAR_DIR || "../views"
+	);
+}
+
+function getJsDir() {
+	return path.resolve(
+		__dirname,
+		process.env.BUILDER_JS_DIR || "../public/reactjs"
 	);
 }
